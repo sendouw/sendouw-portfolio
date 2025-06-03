@@ -200,7 +200,7 @@ const ContactContent = memo(() => {
   return (
     <div className="space-y-6">
       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Get In Touch</h3>
-      <p className="text-gray-600 mb-6 text-sm sm:text-base">I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+      <p className="text-gray-600 mb-6 text-sm sm:text-base">I&apos;m always interested in new opportunities and collaborations. Feel free to reach out!</p>
       <div className="space-y-4">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">

@@ -5,6 +5,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Improve font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   body {
@@ -13,6 +17,19 @@
   
   * {
     box-sizing: border-box;
+  }
+
+  /* Improve image performance */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* Optimize focus styles for accessibility */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
   }
 }
 
@@ -28,6 +45,28 @@
   .gradient-text {
     @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
   }
+
+  /* GPU acceleration for animations */
+  .animate-fadeIn {
+    transform: translateZ(0);
+    will-change: opacity, transform;
+  }
+}
+
+/* Optimized animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
 }
 
 /* Custom scrollbar */
@@ -57,4 +96,52 @@
 /* Smooth transitions for interactive elements */
 a, button {
   transition: all 0.2s ease-in-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-fadeIn {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-blue-50 {
+    @apply bg-blue-100;
+  }
+  
+  .text-gray-600 {
+    @apply text-gray-900;
+  }
+  
+  .text-gray-500 {
+    @apply text-gray-800;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .bg-blue-600 {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
 }
