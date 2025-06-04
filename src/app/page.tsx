@@ -293,152 +293,158 @@ export default function Home() {
   }, [navigation, activeSection])
 
   return (
-    <div className="min-h-screen bg-gray-50 flex relative">
-      {/* Mobile menu button */}
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white rounded-lg shadow-lg border border-gray-200"
-        type="button"
-        aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
-      >
-        {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="flex flex-1 relative">
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white rounded-lg shadow-lg border border-gray-200"
+          type="button"
+          aria-label={isSidebarOpen ? 'Close menu' : 'Open menu'}
+        >
+          {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
 
-      {/* Sidebar */}
-      <aside className={`${
-        isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-72 sm:w-80 lg:w-64 bg-white shadow-xl transition-transform duration-300 ease-in-out`}>
-        <div className="h-full flex flex-col">
-          <div className="p-4 sm:p-6 border-b border-gray-200">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Andy Sendouw</h2>
-            <p className="text-xs sm:text-sm text-gray-600 mt-1">Service Desk Technician & IT Support Specialist</p>
-          </div>
-          
-          <nav className="flex-1 p-3 sm:p-4 overflow-y-auto" aria-label="Main navigation">
-            <div className="space-y-1 sm:space-y-2">
-              {navigation.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleSectionClick(item.id)}
-                  className={`w-full flex items-center space-x-3 px-3 sm:px-4 py-3 sm:py-3 rounded-lg text-left transition-all duration-200 text-sm sm:text-base ${
-                    activeSection === item.id
-                      ? 'bg-blue-50 text-blue-600 shadow-sm'
-                      : 'text-gray-700 hover:bg-gray-50'
-                  }`}
-                  type="button"
-                  aria-pressed={activeSection === item.id}
-                >
-                  <item.icon size={18} className={`${activeSection === item.id ? 'text-blue-600' : 'text-gray-400'} sm:w-5 sm:h-5`} />
-                  <span className="font-medium">{item.name}</span>
-                </button>
-              ))}
+        {/* Sidebar */}
+        <aside className={`${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-40 w-72 sm:w-80 lg:w-64 bg-white shadow-xl transition-transform duration-300 ease-in-out`}>
+          <div className="h-full flex flex-col">
+            <div className="p-4 sm:p-6 border-b border-gray-200">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Andy Sendouw</h2>
+              <p className="text-xs sm:text-sm text-gray-600 mt-1">Service Desk Technician & IT Support Specialist</p>
             </div>
             
-            {/* Apps Section */}
-            <div className="mt-6 sm:mt-8">
-              <h3 className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3 sm:px-4">
-                My Apps
-              </h3>
+            <nav className="flex-1 p-3 sm:p-4 overflow-y-auto" aria-label="Main navigation">
               <div className="space-y-1 sm:space-y-2">
-                <a
-                  href="https://weathervision.sendouw.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-left transition-all duration-200 text-sm sm:text-base text-gray-700 hover:bg-gray-50 group"
-                >
-                  <Code size={16} className="text-gray-400 group-hover:text-blue-500 sm:w-4 sm:h-4" />
-                  <span className="font-medium">WeatherVision</span>
-                  <ExternalLink size={12} className="text-gray-400 group-hover:text-blue-500 ml-auto" />
-                </a>
-                <a
-                  href="https://photography.sendouw.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-left transition-all duration-200 text-sm sm:text-base text-gray-700 hover:bg-gray-50 group"
-                >
-                  <Camera size={16} className="text-gray-400 group-hover:text-blue-500 sm:w-4 sm:h-4" />
-                  <span className="font-medium">Photography Blog</span>
-                  <ExternalLink size={12} className="text-gray-400 group-hover:text-blue-500 ml-auto" />
-                </a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </aside>
-
-      {/* Overlay for mobile */}
-      {isSidebarOpen && (
-        <div
-          className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
-          onClick={closeSidebar}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Main content area */}
-      <main className="flex-1 overflow-y-auto lg:ml-0">
-        <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 pt-16 lg:pt-6">
-          {/* Static About Me Section */}
-          <section className="bg-white rounded-xl shadow-md p-4 sm:p-6 lg:p-8 mb-6 lg:mb-8">
-            <div className="text-center">
-              {/* Profile Picture */}
-              <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 shadow-lg overflow-hidden">
-                <Image 
-                  src="/photo.jpg" 
-                  alt="Andy Sendouw - IT Professional"
-                  width={128}
-                  height={128}
-                  className="w-full h-full object-cover"
-                  priority
-                  quality={85}
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                />
+                {navigation.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleSectionClick(item.id)}
+                    className={`w-full flex items-center space-x-3 px-3 sm:px-4 py-3 sm:py-3 rounded-lg text-left transition-all duration-200 text-sm sm:text-base ${
+                      activeSection === item.id
+                        ? 'bg-blue-50 text-blue-600 shadow-sm'
+                        : 'text-gray-700 hover:bg-gray-50'
+                    }`}
+                    type="button"
+                    aria-pressed={activeSection === item.id}
+                  >
+                    <item.icon size={18} className={`${activeSection === item.id ? 'text-blue-600' : 'text-gray-400'} sm:w-5 sm:h-5`} />
+                    <span className="font-medium">{item.name}</span>
+                  </button>
+                ))}
               </div>
               
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Andy Sendouw</h1>
-              <h2 className="text-lg sm:text-xl text-blue-600 font-semibold mb-4">Service Desk Technician & IT Support Specialist</h2>
-              
-              <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-4 text-sm sm:text-base">
-                Experienced IT Service Desk Technician with 5+ years providing technical support in enterprise 
-                environments. Specialized in user provisioning, endpoint management, and process automation across 
-                Windows, cloud platforms, and enterprise applications with strong focus on SLA compliance and 
-                customer satisfaction.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6">
-                <div className="bg-blue-50 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
-                  <span className="text-blue-700 font-medium text-sm sm:text-base">Service Desk</span>
-                </div>
-                <div className="bg-blue-50 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
-                  <span className="text-blue-700 font-medium text-sm sm:text-base">SLA Management</span>
-                </div>
-                <div className="bg-blue-50 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
-                  <span className="text-blue-700 font-medium text-sm sm:text-base">User Provisioning</span>
+              {/* Apps Section */}
+              <div className="mt-6 sm:mt-8">
+                <h3 className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3 sm:px-4">
+                  My Apps
+                </h3>
+                <div className="space-y-1 sm:space-y-2">
+                  <a
+                    href="https://weathervision.sendouw.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-left transition-all duration-200 text-sm sm:text-base text-gray-700 hover:bg-gray-50 group"
+                  >
+                    <Code size={16} className="text-gray-400 group-hover:text-blue-500 sm:w-4 sm:h-4" />
+                    <span className="font-medium">WeatherVision</span>
+                    <ExternalLink size={12} className="text-gray-400 group-hover:text-blue-500 ml-auto" />
+                  </a>
+                  <a
+                    href="https://photography.sendouw.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center space-x-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-left transition-all duration-200 text-sm sm:text-base text-gray-700 hover:bg-gray-50 group"
+                  >
+                    <Camera size={16} className="text-gray-400 group-hover:text-blue-500 sm:w-4 sm:h-4" />
+                    <span className="font-medium">Photography Blog</span>
+                    <ExternalLink size={12} className="text-gray-400 group-hover:text-blue-500 ml-auto" />
+                  </a>
                 </div>
               </div>
-            </div>
-          </section>
+            </nav>
+          </div>
+        </aside>
 
-          {/* Dynamic Content Section */}
-          {activeSection && (
-            <section className="animate-fadeIn">
-              <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 lg:p-8">
-                {renderActiveComponent()}
+        {/* Overlay for mobile */}
+        {isSidebarOpen && (
+          <div
+            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+            onClick={closeSidebar}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Main content area */}
+        <main className="flex-1 overflow-y-auto lg:ml-0">
+          <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 pt-16 lg:pt-6">
+            {/* Static About Me Section */}
+            <section className="bg-white rounded-xl shadow-md p-4 sm:p-6 lg:p-8 mb-6 lg:mb-8">
+              <div className="text-center">
+                {/* Profile Picture */}
+                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 shadow-lg overflow-hidden">
+                  <Image 
+                    src="/photo.jpg" 
+                    alt="Andy Sendouw - IT Professional"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover"
+                    priority
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="                />
+                </div>
+                
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Andy Sendouw</h1>
+                <h2 className="text-lg sm:text-xl text-blue-600 font-semibold mb-4">Service Desk Technician & IT Support Specialist</h2>
+                
+                <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-4 text-sm sm:text-base">
+                  Experienced IT Service Desk Technician with 5+ years providing technical support in enterprise 
+                  environments. Specialized in user provisioning, endpoint management, and process automation across 
+                  Windows, cloud platforms, and enterprise applications with strong focus on SLA compliance and 
+                  customer satisfaction.
+                </p>
+                
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-6">
+                  <div className="bg-blue-50 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
+                    <span className="text-blue-700 font-medium text-sm sm:text-base">Service Desk</span>
+                  </div>
+                  <div className="bg-blue-50 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
+                    <span className="text-blue-700 font-medium text-sm sm:text-base">SLA Management</span>
+                  </div>
+                  <div className="bg-blue-50 px-3 py-2 sm:px-4 sm:py-2 rounded-full">
+                    <span className="text-blue-700 font-medium text-sm sm:text-base">User Provisioning</span>
+                  </div>
+                </div>
               </div>
             </section>
-          )}
 
-          {/* Call to action when no section is selected */}
-          {!activeSection && (
-            <div className="text-center py-8 sm:py-12">
-              <p className="text-gray-500 text-base sm:text-lg">
-                👈 Select a section from the sidebar to learn more
-              </p>
-            </div>
-          )}
-        </div>
-      </main>
+            {/* Dynamic Content Section */}
+            {activeSection && (
+              <section className="animate-fadeIn">
+                <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 lg:p-8">
+                  {renderActiveComponent()}
+                </div>
+              </section>
+            )}
+
+            {/* Call to action when no section is selected */}
+            {!activeSection && (
+              <div className="text-center py-8 sm:py-12">
+                <p className="text-gray-500 text-base sm:text-lg">
+                  👈 Select a section from the sidebar to learn more
+                </p>
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+
+      {/* Footer placed at bottom */}
+      <footer className="text-center text-xs text-gray-500 p-4 bg-gray-100">
+        <p className="font-medium">Created by Andy Sendouw</p>
+      </footer>
 
       <style jsx>{`
         @keyframes fadeIn {
@@ -451,16 +457,13 @@ export default function Home() {
             transform: translate3d(0, 0, 0);
           }
         }
-        
+
         .animate-fadeIn {
           animation: fadeIn 0.3s ease-out;
           transform: translateZ(0);
           will-change: opacity, transform;
         }
-      `}</style>    
-     <footer className="mt-12 text-center text-xs text-gray-500 p-4 space-y-2 bg-gray-100">
-     <p className="font-medium">Created by Andy Sendouw</p>
-       </footer>
-       </div>
+      `}</style>
+    </div>
   )
 }
