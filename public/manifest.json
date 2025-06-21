@@ -8,55 +8,62 @@
   "theme_color": "#3B82F6",
   "orientation": "portrait-primary",
   "scope": "/",
-  "lang": "en",
-  "dir": "ltr",
-  "categories": ["business", "productivity", "utilities"],
+  "lang": "en-US",
+  "categories": ["portfolio", "professional", "technology"],
   "icons": [
     {
-      "src": "/web-app-manifest-192x192",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
     },
     {
-      "src": "/web-app-manifest-512x512",
-      "sizes": "512x512",
-      "type": "image/png", 
-      "purpose": "maskable any"
+      "src": "/icon1.png",
+      "sizes": "48x48",
+      "type": "image/png"
     },
     {
-      "src": "/apple-icon",
+      "src": "/apple-icon.png", 
       "sizes": "180x180",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
-      "src": "/icon1",
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512", 
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon0.svg",
       "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View my professional portfolio",
+      "url": "/",
+      "icons": [
+        {
+          "src": "/icon1.png",
+          "sizes": "48x48"
+        }
+      ]
     }
   ],
   "screenshots": [
     {
       "src": "/photo.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg",
-      "label": "Andy Sendouw - IT Professional Portfolio"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Contact",
-      "short_name": "Contact",
-      "description": "Get in touch with Andy",
-      "url": "/#contact",
-      "icons": [
-        {
-          "src": "/web-app-manifest-192x192",
-          "sizes": "192x192"
-        }
-      ]
+      "sizes": "1280x720",
+      "type": "image/jpeg"
     }
   ]
 }

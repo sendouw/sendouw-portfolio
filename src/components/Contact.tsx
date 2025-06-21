@@ -12,9 +12,9 @@ export default function Contact() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-xl font-bold text-gray-900 mb-6">Let's Connect</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-6">Let&apos;s Connect</h3>
           <p className="text-gray-600 mb-8">
-            I'm always interested in new opportunities, collaborations, and interesting projects. 
+            I&apos;m always interested in new opportunities, collaborations, and interesting projects. 
             Whether you have a question or just want to say hi, feel free to reach out!
           </p>
           

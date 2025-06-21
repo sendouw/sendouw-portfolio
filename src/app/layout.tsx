@@ -42,14 +42,15 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon', sizes: 'any' },
-      { url: '/icon1', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon1.png', type: 'image/png' },
+      { url: '/icon0.svg', type: 'image/svg+xml' },
     ],
-    apple: '/apple-icon',
+    apple: '/apple-icon.png',
     other: [
       {
         rel: 'mask-icon',
-        url: '/icon1',
+        url: '/icon0.svg',
         color: '#3B82F6',
       },
     ],
@@ -84,10 +85,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="format-detection" content="telephone=no" />
         
-        {/* Favicon and PWA icons - using your existing filenames */}
-        <link rel="icon" href="/favicon" sizes="32x32" />
-        <link rel="icon" href="/icon1" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-icon" />
+        {/* Favicon and PWA icons - using your actual filenames */}
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/icon0.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         
         {/* Additional PWA and browser support */}
