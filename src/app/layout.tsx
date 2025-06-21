@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Andy Sendouw - IT Professional Portfolio',
     description: 'Professional IT portfolio showcasing 5+ years of service desk and technical support experience.',
-    url: 'https://yourdomain.com',
+    url: 'https://sendouw.com',
     siteName: 'Andy Sendouw Portfolio',
     images: [
       {
@@ -37,8 +38,23 @@ export const metadata: Metadata = {
     images: ['/photo.jpg'],
   },
   alternates: {
-    canonical: 'https://yourdomain.com',
+    canonical: 'https://sendouw.com',
   },
+  icons: {
+    icon: [
+      { url: '/favicon', sizes: 'any' },
+      { url: '/icon1', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-icon',
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/icon1',
+        color: '#3B82F6',
+      },
+    ],
+  },
+  manifest: '/manifest.json',
   other: {
     'X-Frame-Options': 'DENY',
     'X-Content-Type-Options': 'nosniff',
@@ -67,9 +83,20 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="format-detection" content="telephone=no" />
+        
+        {/* Favicon and PWA icons - using your existing filenames */}
+        <link rel="icon" href="/favicon" sizes="32x32" />
+        <link rel="icon" href="/icon1" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-icon" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        
+        {/* Additional PWA and browser support */}
+        <meta name="msapplication-TileColor" content="#3B82F6" />
+        
+        {/* iOS specific */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Andy Sendouw" />
       </head>
       <body className={`${inter.className} antialiased`} suppressHydrationWarning>
         {children}
